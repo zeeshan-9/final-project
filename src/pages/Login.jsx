@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
@@ -21,17 +23,20 @@ const Login = () => {
       setErrors(errors);
       return;
     }
+   
 
-    console.log('Form submitted successfully!');
+    // console.log('Form submitted successfully!');
+    navigate('/');
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8">
-      <h2 className="text-2xl font-semibold text-center mb-4">Login</h2>
+    <div className="max-w-md mx-auto mt-10">
+      <h2 className="text-3xl text-white font-bold text-center mb-4">Login</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="email" className="block mb-1">Email</label>
-          <input
+          <label htmlFor="email" className="text-white block mb-1">Email</label>
+          <input 
+             placeholder="Enter your email" 
             type="email"
             id="email"
             value={email}
@@ -41,8 +46,9 @@ const Login = () => {
           {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
         </div>
         <div>
-          <label htmlFor="password" className="block mb-1">Password</label>
-          <input
+          <label htmlFor="password" className="text-white block mb-1">Password</label>
+          <input 
+             placeholder="Enter your password"
             type="password"
             id="password"
             value={password}
@@ -57,3 +63,4 @@ const Login = () => {
   );
 };
 export default Login;
+
